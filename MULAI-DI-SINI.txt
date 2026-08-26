@@ -1,0 +1,13 @@
+VELOURA - NOTIFIKASI TRANSAKSI
+
+1. Buka SETUP-RESEND.bat dan masukkan API Key Resend BARU.
+2. Buka START-WEBSITE.bat.
+3. Browser: http://localhost:3000/test-order-email
+4. Klik KIRIM TEST PESANAN.
+5. Cek Resend > Emails dan Gmail brand.
+
+PENTING: jangan masukkan API key ke chat atau commit ke Git.
+API key yang pernah terlihat di screenshot sebaiknya direvoke dan diganti.
+
+PayPal: isi PAYPAL_CLIENT_ID dan PAYPAL_CLIENT_SECRET di .env.local jika ingin PayPal/Card.
+QRIS: ganti public/qris.png dengan QRIS merchant.

@@ -1,0 +1,10 @@
+MATA UANG OTOMATIS
+
+Checkout sekarang menyesuaikan tampilan mata uang berdasarkan negara pengiriman:
+Indonesia=IDR, Malaysia=MYR, Singapore=SGD, United States=USD, United Kingdom=GBP,
+Canada=CAD, Australia=AUD, New Zealand=NZD, Japan=JPY, China=CNY, South Korea=KRW,
+India=INR, Thailand=THB, Philippines=PHP, Switzerland=CHF, dan negara Eropa tertentu=EUR.
+
+Catatan: harga memakai kurs estimasi di frontend. PayPal pada konfigurasi saat ini tetap dapat memproses dalam USD tergantung merchant account/gateway.
+
+Jangan memasukkan PAYPAL_CLIENT_SECRET ke kode frontend. Gunakan .env.local milik kamu sendiri.
