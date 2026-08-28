@@ -6,6 +6,24 @@ build/
 .env
 .env.local
 .env.*.local
+<<<<<<< HEAD
 .env.local-backup
 *.log
 .DS_Store
+=======
+
+.env.local-backup
+.env.local
+
+.env.local-backup
+.env.local
+
+.env.local-backup
+.env.local
+
+.env.local-backup
+.env.local
+
+.env.local-backup
+.env.local
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585

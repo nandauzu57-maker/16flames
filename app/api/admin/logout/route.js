@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { NextResponse } from "next/server";
 import { sameOrigin } from "../../../../lib/security";
 export async function POST(req) {
@@ -6,3 +7,7 @@ export async function POST(req) {
   res.cookies.set("16flames_admin_session", "", { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "strict", path: "/", maxAge: 0 });
   return res;
 }
+=======
+import {NextResponse} from "next/server";
+export async function POST(){const res=NextResponse.json({ok:true});res.cookies.set("16flames_admin_session","",{httpOnly:true,secure:process.env.NODE_ENV==="production",sameSite:"lax",path:"/",maxAge:0});return res;}
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585

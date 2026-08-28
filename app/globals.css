@@ -1879,6 +1879,7 @@ html, body { overflow-x: hidden; }
   .hero-model{min-height:320px}
   .hero-sticker{right:5%;top:7%;padding:13px;font-size:18px}
 }
+<<<<<<< HEAD
 
 .shipping-route-note{margin:18px 0;padding:16px;border:1px solid #ddd;background:#faf8f5;display:grid;gap:6px}.shipping-route-note b{font-size:9px;letter-spacing:2px}.shipping-route-note span{font-size:14px;font-weight:800}.shipping-route-note small{font-size:11px;color:#666;line-height:1.5}
 
@@ -1916,3 +1917,5 @@ html, body { overflow-x: hidden; }
   .manual-qris-layout{grid-template-columns:1fr !important;}
   .qris-box{width:min(100%, 320px) !important;margin:0 auto !important;}
 }
+=======
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585

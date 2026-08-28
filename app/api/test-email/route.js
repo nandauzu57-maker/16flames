@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { sendOrderEmail } from "../../../lib/email";
+<<<<<<< HEAD
 import { rateLimit, sameOrigin } from "../../../lib/security";
 
 async function run(req) {
@@ -15,3 +16,25 @@ async function run(req) {
 }
 export async function GET(req){ return run(req); }
 export async function POST(req){ return run(req); }
+=======
+
+async function run(){
+  const to = process.env.BRAND_ORDER_EMAIL || "";
+  const result = await sendOrderEmail({
+    orderId:`TEST-${Date.now()}`,
+    paymentMethod:"TEST",
+    status:"TEST EMAIL",
+    shipping:{full_name:"Tes Veloura",email:to,address_line_1:"Test address",city:"Jakarta",state:"DKI Jakarta",postal_code:"10110",country_code:"ID"},
+    items:[{name:"Test Product",size:"OS",qty:1,price:1}],
+    total:1,
+    currency:"USD"
+  });
+  return {ok:true,message:"Email test berhasil dikirim. Cek Inbox dan Spam.",emailId:result.id,to};
+}
+
+export async function GET(){
+  try{return NextResponse.json(await run())}
+  catch(error){return NextResponse.json({ok:false,error:error.message,help:"Jika menggunakan onboarding@resend.dev, alamat tujuan biasanya harus sama dengan email akun Resend. Untuk tujuan lain, verifikasi domain pengirim di Resend lalu gunakan email dari domain tersebut sebagai BRAND_FROM_EMAIL."},{status:502})}
+}
+export async function POST(){return GET()}
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585

@@ -11,8 +11,11 @@ const facts = [
 
 export default function AboutPage(){
   const [scrolled,setScrolled]=useState(false);
+<<<<<<< HEAD
   const [content,setContent]=useState(null);
   useEffect(()=>{fetch("/api/content",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(x=>x&&setContent(x.about)).catch(()=>{})},[]);
+=======
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
   useEffect(()=>{const onScroll=()=>setScrolled(window.scrollY>20); window.addEventListener("scroll",onScroll); return()=>window.removeEventListener("scroll",onScroll)},[]);
 
   return <main className={`philosophy-page ${scrolled?"is-scrolled":""}`}>
@@ -20,17 +23,28 @@ export default function AboutPage(){
 
     <section className="philosophy-hero">
       <div className="philosophy-hero-copy">
+<<<<<<< HEAD
         <div className="eyebrow">{content?.eyebrow || "ABOUT 16FLAMES"}</div>
         <h1>{(content?.title || "WHO WE\nARE.").split("\n").map((x,i)=><span key={i}>{i>0&&<br/>}{i===1?<em>{x}</em>:x}</span>)}</h1>
         <p>{content?.text || "16FLAMES adalah brand fashion Y2K yang percaya bahwa pakaian adalah cara untuk merayakan keberanian jadi diri sendiri — velour, crystal, dan siluet nostalgia yang tetap terasa relevan hari ini."}</p>
+=======
+        <div className="eyebrow">ABOUT 16FLAMES</div>
+        <h1>WHO WE<br/><em>ARE.</em></h1>
+        <p>16FLAMES adalah brand fashion Y2K yang percaya bahwa pakaian adalah cara untuk merayakan keberanian jadi diri sendiri — velour, crystal, dan siluet nostalgia yang tetap terasa relevan hari ini.</p>
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
         <div className="philosophy-signature">16FLAMES <span>EST. 2026</span></div>
       </div>
       <div className="philosophy-hero-visual">
         <div className="philosophy-orbit orbit-one"></div>
         <div className="philosophy-orbit orbit-two"></div>
         <div className="philosophy-image-frame">
+<<<<<<< HEAD
           <img src={content?.heroImage || "/18.jpg"} alt="16FLAMES studio"/>
           <div className="philosophy-image-label">{content?.heroLabel || "OUR STUDIO / 001"}</div>
+=======
+          <img src="/18.jpg" alt="16FLAMES studio"/>
+          <div className="philosophy-image-label">OUR STUDIO / 001</div>
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
         </div>
         <div className="floating-star star-one">✦</div>
         <div className="floating-star star-two">✧</div>

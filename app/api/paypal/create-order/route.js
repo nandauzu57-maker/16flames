@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import { getProduct } from "../../../../lib/catalog";
+<<<<<<< HEAD
 import { rateLimit, sameOrigin } from "../../../../lib/security";
 import { normalizeShipping, getShippingRoute } from "../../../../lib/shipping";
+=======
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
 
 const paypalBase = process.env.PAYPAL_ENV === "live"
   ? "https://api-m.paypal.com"
@@ -23,6 +26,7 @@ async function paypalAccessToken(){
 }
 
 export async function POST(request){
+<<<<<<< HEAD
   const limit=rateLimit(request,"paypal-create",20,60_000);
   if(!limit.ok) return NextResponse.json({error:"Terlalu banyak permintaan. Silakan coba lagi."},{status:429,headers:{"Retry-After":String(limit.retryAfter)}});
   if(!sameOrigin(request)) return NextResponse.json({error:"Origin tidak diizinkan."},{status:403});
@@ -30,6 +34,12 @@ export async function POST(request){
     const body = await request.json();
     const items = Array.isArray(body.items) ? body.items : [];
     const shippingAddress = body.shipping && typeof body.shipping === "object" ? normalizeShipping(body.shipping) : null;
+=======
+  try{
+    const body = await request.json();
+    const items = Array.isArray(body.items) ? body.items : [];
+    const shippingAddress = body.shipping && typeof body.shipping === "object" ? body.shipping : null;
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
     if(!items.length) return NextResponse.json({error:"Cart is empty"},{status:400});
 
     const normalized = items.map(item => {
@@ -51,7 +61,11 @@ export async function POST(request){
         intent:"CAPTURE",
         purchase_units:[{
           reference_id:`VELOURA-${Date.now()}`,
+<<<<<<< HEAD
           description:`Veloura fashion order — ${getShippingRoute(shippingAddress).routeLabel}`,
+=======
+          description:"Veloura fashion order",
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
           amount:{currency_code:"USD",value:total.toFixed(2),breakdown:{item_total:{currency_code:"USD",value:subtotal.toFixed(2)},shipping:{currency_code:"USD",value:shipping.toFixed(2)}}},
           items:normalized.map(x=>({name:x.product.name,unit_amount:{currency_code:"USD",value:x.product.price.toFixed(2)},quantity:String(x.qty),category:"PHYSICAL_GOODS"})),
           ...(shippingAddress?.address_line_1 ? {shipping:{name:{full_name:String(shippingAddress.full_name||"").slice(0,300)},address:{address_line_1:String(shippingAddress.address_line_1).slice(0,300),address_line_2:String(shippingAddress.address_line_2||"").slice(0,300),admin_area_2:String(shippingAddress.city||"").slice(0,120),admin_area_1:String(shippingAddress.state||"").slice(0,120),postal_code:String(shippingAddress.postal_code||"").slice(0,60),country_code:String(shippingAddress.country_code||"").toUpperCase().slice(0,2)}}} : {})
@@ -67,9 +81,16 @@ export async function POST(request){
       cache:"no-store"
     });
     const data = await order.json();
+<<<<<<< HEAD
     if(!order.ok) return NextResponse.json({error:"Could not create PayPal order"},{status:500});
     return NextResponse.json({id:data.id});
   }catch(error){
     return NextResponse.json({error:"Checkout gagal diproses. Silakan coba lagi."},{status:500});
+=======
+    if(!order.ok) return NextResponse.json({error:data.message || "Could not create PayPal order",details:data},{status:500});
+    return NextResponse.json({id:data.id});
+  }catch(error){
+    return NextResponse.json({error:error.message || "Checkout error"},{status:500});
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
   }
 }

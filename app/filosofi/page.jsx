@@ -11,8 +11,11 @@ const moments = [
 
 export default function PhilosophyPage(){
   const [scrolled,setScrolled]=useState(false);
+<<<<<<< HEAD
   const [content,setContent]=useState(null);
   useEffect(()=>{fetch("/api/content",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(x=>x&&setContent(x.philosophy)).catch(()=>{})},[]);
+=======
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
   useEffect(()=>{const onScroll=()=>setScrolled(window.scrollY>20); window.addEventListener("scroll",onScroll); return()=>window.removeEventListener("scroll",onScroll)},[]);
 
   return <main className={`philosophy-page ${scrolled?"is-scrolled":""}`}>
@@ -20,17 +23,28 @@ export default function PhilosophyPage(){
 
     <section className="philosophy-hero">
       <div className="philosophy-hero-copy">
+<<<<<<< HEAD
         <div className="eyebrow">{content?.eyebrow || "THE 16FLAMES PHILOSOPHY"}</div>
         <h1>{(content?.title || "WEAR YOUR\nENERGY.").split("\n").map((x,i)=><span key={i}>{i>0&&<br/>}{i===1?<em>{x}</em>:x}</span>)}</h1>
         <p>{content?.text || "16FLAMES stands for the unapologetic confidence of modern girls — those who embrace being sexy, loud, soft, messy, powerful, chaotic, and gorgeous all at once."}</p>
+=======
+        <div className="eyebrow">THE VELOURA PHILOSOPHY</div>
+        <h1>WEAR YOUR<br/><em>ENERGY.</em></h1>
+        <p>16FLAMES stands for the unapologetic confidence of modern girls — those who embrace being sexy, loud, soft, messy, powerful, chaotic, and gorgeous al at once.</p>
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
         <div className="philosophy-signature">16<em>fla</em>mes <span>EST. 2026</span></div>
       </div>
       <div className="philosophy-hero-visual">
         <div className="philosophy-orbit orbit-one"></div>
         <div className="philosophy-orbit orbit-two"></div>
         <div className="philosophy-image-frame">
+<<<<<<< HEAD
           <img src={content?.heroImage || "/15.jpg"} alt="16FLAMES fashion campaign"/>
           <div className="philosophy-image-label">{content?.heroLabel || "ICONIC ENERGY / 001"}</div>
+=======
+          <img src="/15.jpg" alt="Veloura fashion campaign"/>
+          <div className="philosophy-image-label">ICONIC ENERGY / 001</div>
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
         </div>
         <div className="floating-star star-one">✦</div>
         <div className="floating-star star-two">✧</div>

@@ -1,6 +1,7 @@
 import {NextResponse} from "next/server";
 import {getProduct} from "../../../lib/catalog";
 import {sendOrderEmail} from "../../../lib/email";
+<<<<<<< HEAD
 import {rateLimit, sameOrigin} from "../../../lib/security";
 import { normalizeShipping } from "../../../lib/shipping";
 
@@ -15,6 +16,17 @@ export async function POST(req){
     if(!s.full_name || !s.email || !s.address_line_1 || !s.city || !s.postal_code || !s.country_code) return NextResponse.json({error:"Lengkapi nama, email, dan alamat pengiriman terlebih dahulu."},{status:400});
     if(!/^\S+@\S+\.\S+$/.test(String(s.email))) return NextResponse.json({error:"Format email pembeli tidak valid."},{status:400});
     const rawItems=Array.isArray(body.items)?body.items.slice(0,50):[];
+=======
+
+export async function POST(req){
+  try{
+    const body=await req.json();
+    if(!["qris","virtual_account"].includes(body?.type)) return NextResponse.json({error:"Metode pembayaran tidak tersedia."},{status:400});
+    const s=body.shipping || {};
+    if(!s.full_name || !s.email || !s.address_line_1 || !s.city || !s.postal_code || !s.country_code) return NextResponse.json({error:"Lengkapi nama, email, dan alamat pengiriman terlebih dahulu."},{status:400});
+    if(!/^\S+@\S+\.\S+$/.test(String(s.email))) return NextResponse.json({error:"Format email pembeli tidak valid."},{status:400});
+    const rawItems=Array.isArray(body.items)?body.items:[];
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
     if(!rawItems.length) return NextResponse.json({error:"Keranjang kosong."},{status:400});
     const items=rawItems.map(x=>{
       const p=getProduct(x.productId);
@@ -27,6 +39,7 @@ export async function POST(req){
     // Keep this rate aligned with the storefront's displayed IDR rate.
     const currency=String(body.currency||"IDR").toUpperCase();
     const idrRate=15500;
+<<<<<<< HEAD
     const myrRate=4.70;
     const total=currency === "IDR"
       ? Math.round((subtotal+shippingCost)*idrRate)
@@ -39,6 +52,11 @@ export async function POST(req){
         ? items.map(x=>({...x,price:Number((x.price*myrRate).toFixed(2))}))
         : items;
     const prefix=body.type==="virtual_account" ? "VA" : body.type==="duitnow_qr" ? "DUITNOW" : body.type==="bank_transfer_my" ? "MYBANK" : "QRIS";
+=======
+    const total=currency === "IDR" ? Math.round((subtotal+shippingCost)*idrRate) : Number((subtotal+shippingCost).toFixed(2));
+    const emailItems=currency === "IDR" ? items.map(x=>({...x,price:Math.round(x.price*idrRate)})) : items;
+    const prefix=body.type==="virtual_account" ? "VA" : "QRIS";
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
     const orderId=`16flames-${prefix}-${Date.now().toString(36).toUpperCase()}`;
     const status="PENDING_VERIFICATION";
 
@@ -50,6 +68,10 @@ export async function POST(req){
     }
     return NextResponse.json({ok:true,orderId,status,paymentMethod:body.type,bank:body.bank||"",emailSent:true,emailId:emailResult.id});
   }catch(error){
+<<<<<<< HEAD
     return NextResponse.json({error:"Data order tidak valid atau terjadi kesalahan server."},{status:400});
+=======
+    return NextResponse.json({error:error.message || "Data order tidak valid."},{status:400});
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
   }
 }

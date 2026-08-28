@@ -4,11 +4,17 @@ import { useEffect, useMemo, useState } from "react";
 import PayPalCheckout from "../components/PayPalCheckout";
 import ManualPayment from "../components/ManualPayment";
 import DirectVAPayment from "../components/DirectVAPayment";
+<<<<<<< HEAD
 import MalaysiaPayment from "../components/MalaysiaPayment";
 import Navbar from "../components/Navbar";
 import { normalizeShipping, getShippingRoute } from "../lib/shipping";
 
 const DEFAULT_PRODUCTS = [
+=======
+import Navbar from "../components/Navbar";
+
+const PRODUCTS = [
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
   {id:1,name:"Velour Zip Hoodie",price:89,category:"Tracksuits",color:"Pink",colors:["Pink","Black","Baby Blue"],sizes:["XS","S","M","L","XL","2XL"],sizeType:"apparel",badge:"BEST SELLER",art:"hoodie",material:"Velour",fit:"Oversized",stock:18,image:"/products/1.jpg"},
   {id:2,name:"Heritage Velour Pant",price:79,category:"Tracksuits",color:"Black",colors:["Black","Pink","Grey"],sizes:["XS","S","M","L","XL","2XL"],sizeType:"bottom",badge:"NEW",art:"pants",material:"Velour",fit:"Relaxed",stock:24,image:"/products/2.jpg"},
   {id:3,name:"Bling Baby Tee",price:49,category:"Tops",color:"White",colors:["White","Pink","Black"],sizes:["XS","S","M","L","XL"],sizeType:"apparel",badge:"",art:"tee",material:"Cotton jersey",fit:"Fitted",stock:32,image:"/products/3.jpg"},
@@ -31,7 +37,11 @@ const CATEGORIES = ["NEW","TRACKSUITS","T-SHIRT","CLOTHING","BAGS","JEWELRY","PE
 // ================= PHOTO SETTINGS =================
 // Ganti file ini saja untuk mengganti foto banner utama.
 // Letakkan foto kamu di: public/hero.jpg
+<<<<<<< HEAD
 const HERO_IMAGE = "/hero.jpg"; // fallback; editable from Admin
+=======
+const HERO_IMAGE = "/hero.jpg";
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
 // ==================================================
 
 
@@ -82,15 +92,22 @@ function Art({type,image}){
 
 export default function Home(){
   const [currency,setCurrency]=useState("USD");
+<<<<<<< HEAD
   const [siteContent,setSiteContent]=useState(null);
   const [products,setProducts]=useState(DEFAULT_PRODUCTS);
+=======
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
   const [category,setCategory]=useState("ALL");
   const [search,setSearch]=useState("");
   const [menu,setMenu]=useState(false);
   const [cart,setCart]=useState([]);
   // Inventory is intentionally session-only for this demo/testing store.
   // Old localStorage values could make products appear SOLD OUT after edits or refreshes.
+<<<<<<< HEAD
   const [inventory,setInventory]=useState(()=>Object.fromEntries(DEFAULT_PRODUCTS.map(p=>[p.id,p.stock])));
+=======
+  const [inventory,setInventory]=useState(()=>Object.fromEntries(PRODUCTS.map(p=>[p.id,p.stock])));
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
   const [wishlist,setWishlist]=useState([]);
   const [drawer,setDrawer]=useState(false);
   const [quick,setQuick]=useState(null);
@@ -104,6 +121,7 @@ export default function Home(){
   const [priceFilter,setPriceFilter]=useState("ALL");
   const [sizeFilter,setSizeFilter]=useState("");
   const [filterOpen,setFilterOpen]=useState(false);
+<<<<<<< HEAD
   const [shipping,setShipping]=useState({full_name:"",email:"",address_line_1:"",address_line_2:"",city:"",state:"",postal_code:"",country_code:"US",fulfillment_origin:"Indonesia"});
 
   useEffect(()=>{ if(toast){const t=setTimeout(()=>setToast(""),1800);return()=>clearTimeout(t)}},[toast]);
@@ -117,6 +135,12 @@ export default function Home(){
     }).catch(()=>{});
   },[]);
   useEffect(()=>{
+=======
+  const [shipping,setShipping]=useState({full_name:"",email:"",address_line_1:"",address_line_2:"",city:"",state:"",postal_code:"",country_code:"US"});
+
+  useEffect(()=>{ if(toast){const t=setTimeout(()=>setToast(""),1800);return()=>clearTimeout(t)}},[toast]);
+  useEffect(()=>{
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
     try{
       const saved=localStorage.getItem("16flames_currency");
       if(saved && CURRENCY_INFO[saved]) setCurrency(saved);
@@ -134,7 +158,11 @@ export default function Home(){
     {id:"high",min:40,max:Infinity,label:"High"}
   ];
 
+<<<<<<< HEAD
   const filtered=useMemo(()=>products.filter((p,index)=>{
+=======
+  const filtered=useMemo(()=>PRODUCTS.filter((p,index)=>{
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
     const catOk=category==="ALL" || category==="NEW" && p.badge==="NEW" || category==="SALE" && p.price<70 || category===p.category.toUpperCase();
     const typeOk=productType==="ALL" || productType==="FEATURED" && (p.badge==="NEW" || index<6);
     const availabilityOk=availability==="ALL" || (inventory[p.id] ?? p.stock) > 0;
@@ -142,7 +170,11 @@ export default function Home(){
     const priceOk=priceFilter==="ALL" || (range && p.price>=range.min && p.price<range.max);
     const sizeOk=!sizeFilter || p.sizes.includes(sizeFilter);
     return catOk && typeOk && availabilityOk && priceOk && sizeOk && p.name.toLowerCase().includes(search.toLowerCase());
+<<<<<<< HEAD
   }),[products,category,search,productType,availability,priceFilter,sizeFilter,inventory]);
+=======
+  }),[category,search,productType,availability,priceFilter,sizeFilter,inventory]);
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
 
   const activeFilterCount=[productType!=="ALL",availability!=="ALL",priceFilter!=="ALL",!!sizeFilter].filter(Boolean).length;
   const idr=currency==="IDR";
@@ -219,6 +251,7 @@ export default function Home(){
 
     <section className="hero-main">
       <div className="hero-copy">
+<<<<<<< HEAD
         <div className="eyebrow">{siteContent?.home?.heroEyebrow || "THE NEW Y2K ERA"}</div>
         <h1>{(siteContent?.home?.heroTitle || "ICONIC\nENERGY.").split("\n").map((x,i)=><span key={i}>{i>0&&<br/>}{i===1?<em>{x}</em>:x}</span>)}</h1>
         <p>{siteContent?.home?.heroText || "The name 16FLAMES now functions purely as a brand identity — short, memorable, punchy, and modern. It represents a girl who stands out, owns her style, and expresses herself without limits."}</p>
@@ -227,6 +260,16 @@ export default function Home(){
       <div className="hero-model">
         <img
           src={siteContent?.home?.heroImage || HERO_IMAGE}
+=======
+        <div className="eyebrow">THE NEW Y2K ERA</div>
+        <h1>ICONIC<br/><em>ENERGY.</em></h1>
+        <p>The name 16FLAMES now functions purely as a brand identity — short, memorable, punchy, and modern. It represents a girl who stands out, owns her style, and expresses herself without limits.</p>
+        <button className="black-btn" onClick={()=>selectCategory("NEW")}>SHOP NEW ARRIVALS</button>
+      </div>
+      <div className="hero-model">
+        <img
+          src={HERO_IMAGE}
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
           alt="Fashion campaign"
           onError={(e) => {
             e.currentTarget.src = "/products/1.jpg";
@@ -335,7 +378,11 @@ export default function Home(){
     <section className="editorial">
       <div className="editorial-photo">
   <img
+<<<<<<< HEAD
           src={siteContent?.home?.editorialImage || "/editorial.jpg"}
+=======
+          src="/editorial.jpg"
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
           alt="Fashion editorial"
           onError={(e) => {
             e.currentTarget.src = "/products/3.jpg";
@@ -343,6 +390,7 @@ export default function Home(){
         />
   <div className="scribble"><br/></div>
 </div>
+<<<<<<< HEAD
       <div className="editorial-copy"><div className="eyebrow">{siteContent?.home?.editorialEyebrow || "THE NEW COLLECTION"}</div><h2>{(siteContent?.home?.editorialTitle || "MADE TO\nSHINE.").split("\n").map((x,i)=><span key={i}>{i>0&&<br/>}{i===1?<em>{x}</em>:x}</span>)}</h2><p></p><button className="outline-btn" onClick={()=>selectCategory("JEWELRY")}>SHOP </button></div>
     </section>
 
@@ -354,6 +402,19 @@ export default function Home(){
     <section className="pet-home">
       <div><div className="eyebrow">{siteContent?.home?.petEyebrow || "HOME & PET"}</div><h2>{(siteContent?.home?.petTitle || "CUTE THINGS\nLIVE HERE.").split("\n").map((x,i)=><span key={i}>{i>0&&<br/>}{i===1?<em>{x}</em>:x}</span>)}</h2><p></p><button className="outline-btn" onClick={()=>setToast("Home & Pet collection demo")}>SHOP HOME & PET</button></div>
       <div className="pet-art photo-card"><img src={siteContent?.home?.petImage || "/home-pet.jpg"} alt="16FLAMES lifestyle collection" onError={(e)=>{e.currentTarget.src="/editorial.jpg"}} /></div>
+=======
+      <div className="editorial-copy"><div className="eyebrow">THE NEW COLLECTION</div><h2>MADE TO<br/><em>SHINE.</em></h2><p></p><button className="outline-btn" onClick={()=>selectCategory("JEWELRY")}>SHOP </button></div>
+    </section>
+
+    <section className="customizer">
+      <div className="custom-copy"><div className="eyebrow">MAKE IT YOURS</div><h2>THE BLING<br/><em>MATCHMAKER</em></h2><p>Pick a silhouette, choose your size and create your own signature look.</p><button className="black-btn" onClick={()=>setToast("Customizer demo opened")}>START CUSTOMIZING</button></div>
+      <div className="custom-card photo-card"><img src="/customizer.jpg" alt="16FLAMES custom collection" onError={(e)=>{e.currentTarget.src="/hero.jpg"}} /></div>
+    </section>
+
+    <section className="pet-home">
+      <div><div className="eyebrow">HOME & PET</div><h2>CUTE THINGS<br/><em>LIVE HERE.</em></h2><p></p><button className="outline-btn" onClick={()=>setToast("Home & Pet collection demo")}>SHOP HOME & PET</button></div>
+      <div className="pet-art photo-card"><img src="/home-pet.jpg" alt="16FLAMES lifestyle collection" onError={(e)=>{e.currentTarget.src="/editorial.jpg"}} /></div>
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
     </section>
 
     <section className="instagram">
@@ -369,7 +430,11 @@ export default function Home(){
     </section>
 
     <section className="newsletter">
+<<<<<<< HEAD
       <div><div className="eyebrow">JOIN THE CLUB</div><h2>{(siteContent?.home?.newsletterTitle || "GET 15% OFF\nYOUR FIRST ORDER.").split("\n").map((x,i)=><span key={i}>{i>0&&<br/>}{x}</span>)}</h2><p>{siteContent?.home?.newsletterText || "Sign up for new drops, exclusive offers and all things 16FLAMES"}</p></div>
+=======
+      <div><div className="eyebrow">JOIN THE CLUB</div><h2>GET 15% OFF<br/>YOUR FIRST ORDER.</h2><p>Sign up for new drops, exclusive offers and all things 16FLAMES</p></div>
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
       <div className="signup">{emailDone?<strong>You're on the list ✦</strong>:<><input value={newsletter} onChange={e=>setNewsletter(e.target.value)} placeholder="Email address"/><button onClick={()=>newsletter.includes("@")?setEmailDone(true):setToast("Enter a valid email")}>SIGN ME UP</button></>}</div>
     </section>
 
@@ -476,7 +541,11 @@ export default function Home(){
       <p className="checkout-intro">Global checkout with PayPal, credit/debit cards and eligible alternative wallets. Payment options depend on your merchant account and the buyer's country/device.</p>
       <div className="checkout-address">
         <div className="checkout-section-title">SHIPPING ADDRESS</div>
+<<<<<<< HEAD
         <div className="address-grid"><input placeholder="Full name" value={shipping.full_name} onChange={e=>setShipping({...shipping,full_name:e.target.value})}/><input type="email" placeholder="Email pembeli" value={shipping.email} onChange={e=>setShipping({...shipping,email:e.target.value})}/><select value={shipping.country_code} onChange={e=>{const countryCode=e.target.value;const nextShipping=normalizeShipping({...shipping,country_code:countryCode});setShipping(nextShipping);setCurrency(currencyForCountry(countryCode));try{localStorage.setItem("16flames_currency",currencyForCountry(countryCode))}catch(err){}}}>
+=======
+        <div className="address-grid"><input placeholder="Full name" value={shipping.full_name} onChange={e=>setShipping({...shipping,full_name:e.target.value})}/><input type="email" placeholder="Email pembeli" value={shipping.email} onChange={e=>setShipping({...shipping,email:e.target.value})}/><select value={shipping.country_code} onChange={e=>{const countryCode=e.target.value;setShipping({...shipping,country_code:countryCode});setCurrency(currencyForCountry(countryCode));try{localStorage.setItem("16flames_currency",currencyForCountry(countryCode))}catch(err){}}}>
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
           <option value="US">United States — USD ($)</option>
           <option value="GB">United Kingdom — GBP (£)</option>
           <option value="CA">Canada — CAD (CA$)</option>
@@ -503,7 +572,10 @@ export default function Home(){
           <option value="PT">Portugal — EUR (€)</option>
         </select><input placeholder="Address" value={shipping.address_line_1} onChange={e=>setShipping({...shipping,address_line_1:e.target.value})}/><input placeholder="Apartment / suite (optional)" value={shipping.address_line_2} onChange={e=>setShipping({...shipping,address_line_2:e.target.value})}/><input placeholder="City" value={shipping.city} onChange={e=>setShipping({...shipping,city:e.target.value})}/><input placeholder="State / Province" value={shipping.state} onChange={e=>setShipping({...shipping,state:e.target.value})}/><input placeholder="Postal code" value={shipping.postal_code} onChange={e=>setShipping({...shipping,postal_code:e.target.value})}/></div>
       </div>
+<<<<<<< HEAD
       <div className="shipping-route-note"><b>RUTE PENGIRIMAN</b><span>{getShippingRoute(shipping).routeLabel}</span><small>{shipping.country_code === "MY" ? "Pesanan Malaysia diproses dari fulfillment Malaysia dan diarahkan ke Kuala Lumpur." : "Pesanan internasional diproses dari fulfillment Bandung, Indonesia."}</small></div>
+=======
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
       <div className="checkout-summary">
         {cart.map((x,i)=><div className="checkout-summary-row" key={i}><span>{x.product.name} × {x.qty}</span><strong>{money(x.product.price*x.qty,currency)}</strong></div>)}
         <div className="checkout-summary-row total"><span>TOTAL PEMBAYARAN · {currency}</span><strong>{money(total,currency)}</strong></div>
@@ -518,6 +590,7 @@ export default function Home(){
         <div className="international-method"><div className="method-logo apple-logo"></div><div><b>Apple Pay</b><span>Shown automatically when eligible</span></div></div>
         <div className="international-method"><div className="method-logo google-logo">G</div><div><b>Google Pay</b><span>Shown automatically when eligible</span></div></div>
       </div>
+<<<<<<< HEAD
       {shipping.country_code === "MY" && <>
         <div className="payment-choice-heading">PEMBAYARAN MALAYSIA</div>
         <p className="checkout-intro malaysia-payment-note">Pembayaran Malaysia menggunakan <b>MYR (RM)</b>. Tampilan dan alur dibuat sama seperti pembayaran Indonesia, dengan metode Malaysia yang sesuai.</p>
@@ -533,6 +606,8 @@ export default function Home(){
         }} onError={(err)=>setToast(err?.message || "Pembayaran Malaysia gagal")}/>
       </>}
 
+=======
+>>>>>>> 7945d3e52462ae5b2a03b664ee77d9025c89f585
       {shipping.country_code === "ID" && <>
         <div className="payment-choice-heading">PEMBAYARAN INDONESIA</div>
         <p className="checkout-intro indonesia-payment-note">QRIS dan Virtual Account langsung ke akun kamu menggunakan <b>IDR</b>. Kamu tetap bebas mengubah mata uang tampilan di navbar; pilih IDR saat ingin memakai pembayaran Indonesia.</p>
