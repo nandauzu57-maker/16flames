@@ -1,0 +1,8 @@
+Letakkan gambar QRIS merchant yang asli di folder ini dengan nama tepat:
+qris.png
+
+Path yang benar:
+public/qris.png
+
+Setelah deploy ke Vercel, QRIS akan tersedia di:
+https://domain-kamu.com/qris.png
