@@ -1,0 +1,15 @@
+PANDUAN FOTO PRODUK VELOURA
+
+1. Semua foto produk utama berada di folder: public/products/
+2. Ganti file 1.jpg sampai 14.jpg dengan foto produk kamu sendiri.
+3. Nama file harus tetap sama dengan nomor produk.
+4. Setelah diganti, foto otomatis tampil di halaman produk, quick view, dan keranjang.
+5. Ukuran yang disarankan: JPG/WEBP, rasio 4:5 atau 3:4, minimal 1200px sisi terpendek.
+6. Jika ingin foto tambahan di quick view, kamu bisa menambahkan:
+   1-2.jpg dan 1-3.jpg untuk produk 1,
+   2-2.jpg dan 2-3.jpg untuk produk 2, dan seterusnya.
+
+CONTOH:
+public/products/1.jpg       = foto utama Velour Zip Hoodie
+public/products/1-2.jpg     = foto kedua
+public/products/1-3.jpg     = foto ketiga

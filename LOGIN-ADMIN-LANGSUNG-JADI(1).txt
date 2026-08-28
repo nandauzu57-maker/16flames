@@ -1,0 +1,11 @@
+LOGIN ADMIN LANGSUNG JADI
+
+Untuk menjalankan di komputer lokal:
+1. npm install
+2. npm run dev
+3. Buka http://localhost:3000/admin/login
+
+USERNAME: 16flames
+PASSWORD: 16flames2026
+
+Versi lokal ini sengaja mengabaikan ADMIN_USERNAME, ADMIN_PASSWORD_HASH, dan ADMIN_SESSION_SECRET dari .env.local agar login tidak gagal karena konfigurasi environment. Saat production/deploy, environment variable tetap wajib diisi dengan aman.
