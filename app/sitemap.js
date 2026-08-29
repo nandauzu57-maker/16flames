@@ -1,15 +1,13 @@
 export default function sitemap() {
-  const baseUrl = "https://www.16flames.store";
-
   return [
     {
-      url: baseUrl,
+      url: "https://16flames.store/",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/about`,
+      url: "https://16flames.store/about",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
