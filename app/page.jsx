@@ -361,9 +361,9 @@ export default function Home(){
       <div className="insta-grid">{[
         "/hero.jpg",
         "/customizer.jpg",
-        "/editorial.jpg",
-        "/15.jpg",
-        "/customizer.jpg",
+        "/.jpg",
+        "/.jpg",
+        "/.jpg",
         "/18.jpg"
       ].map((src,i)=><div className="insta" key={i}><img src={src} alt={`16FLAMES collection ${i+1}`} /></div>)}</div>
     </section>
