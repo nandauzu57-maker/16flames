@@ -353,7 +353,7 @@ export default function Home(){
 
     <section className="pet-home">
       <div><div className="eyebrow">{siteContent?.home?.petEyebrow || "HOME & PET"}</div><h2>{(siteContent?.home?.petTitle || "CUTE THINGS\nLIVE HERE.").split("\n").map((x,i)=><span key={i}>{i>0&&<br/>}{i===1?<em>{x}</em>:x}</span>)}</h2><p></p><button className="outline-btn" onClick={()=>setToast("Home & Pet collection demo")}>SHOP HOME & PET</button></div>
-      <div className="pet-art photo-card"><img src={siteContent?.home?.petImage || "/home-pet.jpg"} alt="16FLAMES lifestyle collection" onError={(e)=>{e.currentTarget.src="/editorial.jpg"}} /></div>
+      <div className="pet-art photo-card"><img src={siteContent?.home?.petImage || "/hero.jpg"} alt="16FLAMES lifestyle collection" onError={(e)=>{e.currentTarget.src="/editorial.jpg"}} /></div>
     </section>
 
     <section className="instagram">
