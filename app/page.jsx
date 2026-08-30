@@ -238,8 +238,8 @@ export default function Home(){
     </section>
 
     <section className="split-banner">
-      <div className="split-image split-one"><div>-----<br/><b>-----</b></div></div>
-      <div className="split-image split-two"><div>EVERYDAY<br/><b>ICON</b></div></div>
+      <div className="split-image split-one"><div>--<br/><b>--</b></div></div>
+      <div className="split-image split-two"><div>--<br/><b>--</b></div></div>
     </section>
 
     <section className="feature-strip">
