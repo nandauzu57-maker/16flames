@@ -246,7 +246,7 @@ export default function Home(){
       <div><strong>NO SHIPPING FEE</strong><span>Harga produk = total pembayaran</span></div>
       <div><strong>SECURE CHECKOUT</strong><span>PayPal & international payments</span></div>
       <div><strong>WORLDWIDE</strong><span>International delivery</span></div>
-      <div><strong>RETURNS</strong><span>30 day returns</span></div>
+      <div><strong>-</strong><span>-</span></div>
     </section>
 
     <section className="shop" id="shop">
