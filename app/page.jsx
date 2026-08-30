@@ -9,8 +9,8 @@ import Navbar from "../components/Navbar";
 import { normalizeShipping, getShippingRoute } from "../lib/shipping";
 
 const DEFAULT_PRODUCTS = [
-  {id:1,name:"Velour Zip Hoodie",price:89,category:"Tracksuits",color:"Pink",colors:["Pink","Black","Baby Blue"],sizes:["XS","S","M","L","XL","2XL"],sizeType:"apparel",badge:"BEST SELLER",art:"hoodie",material:"Velour",fit:"Oversized",stock:18,image:"/products/1.jpg"},
-  {id:2,name:"Heritage Velour Pant",price:79,category:"Tracksuits",color:"Black",colors:["Black","Pink","Grey"],sizes:["XS","S","M","L","XL","2XL"],sizeType:"bottom",badge:"NEW",art:"pants",material:"Velour",fit:"Relaxed",stock:24,image:"/products/2.jpg"},
+  {id:1,name:"Velour Zip Hoodie",price:89,category:"---",color:"Pink",colors:["Pink","Black","Baby Blue"],sizes:["XS","S","M","L","XL","2XL"],sizeType:"apparel",badge:"BEST SELLER",art:"hoodie",material:"Velour",fit:"Oversized",stock:18,image:"/products/1.jpg"},
+  {id:2,name:"Heritage Velour Pant",price:79,category:"----",color:"Black",colors:["Black","Pink","Grey"],sizes:["XS","S","M","L","XL","2XL"],sizeType:"bottom",badge:"NEW",art:"pants",material:"Velour",fit:"Relaxed",stock:24,image:"/products/2.jpg"},
   {id:3,name:"Bling Baby Tee",price:49,category:"Tops",color:"White",colors:["White","Pink","Black"],sizes:["XS","S","M","L","XL"],sizeType:"apparel",badge:"",art:"tee",material:"Cotton jersey",fit:"Fitted",stock:32,image:"/products/3.jpg"},
   {id:4,name:"Butterfly Zip Jacket",price:99,category:"Jackets",color:"Blue",colors:["Blue","Pink","Black"],sizes:["XS","S","M","L","XL","2XL"],sizeType:"apparel",badge:"NEW",art:"jacket",material:"Poly blend",fit:"Regular",stock:12,image:"/products/4.jpg"},
   {id:5,name:"Crystal Shoulder Bag",price:79,category:"Bags",color:"Silver",colors:["Silver","Pink","Black"],sizes:["OS"],sizeType:"one-size",badge:"",art:"bag",material:"Faux leather",fit:"One size",stock:14,image:"/products/5.jpg"},
@@ -238,7 +238,7 @@ export default function Home(){
     </section>
 
     <section className="split-banner">
-      <div className="split-image split-one"><div>TRACKSUIT<br/><b>HEADLINER</b></div></div>
+      <div className="split-image split-one"><div>-----<br/><b>-----</b></div></div>
       <div className="split-image split-two"><div>EVERYDAY<br/><b>ICON</b></div></div>
     </section>
 
