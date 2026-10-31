@@ -237,11 +237,6 @@ export default function Home(){
       </div>
     </section>
 
-    <section className="split-banner">
-      <div className="split-image split-one"><div>--<br/><b>--</b></div></div>
-      <div className="split-image split-two"><div>--<br/><b>--</b></div></div>
-    </section>
-
     <section className="feature-strip">
       <div><strong>NO SHIPPING FEE</strong><span>Harga produk = total pembayaran</span></div>
       <div><strong>SECURE CHECKOUT</strong><span>PayPal & international payments</span></div>
