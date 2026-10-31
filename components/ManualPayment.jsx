@@ -29,7 +29,7 @@ export default function ManualPayment({type,shipping,items,total,currency="IDR",
         <div className={`qris-box ${imageError?"qris-missing":""}`}>
           {!imageError ? <img src="/qris.png" alt="QRIS toko" onError={()=>setImageError(true)}/> : <span className="qris-fallback">QRIS TOKO<br/><small>Tambahkan file public/qris.png</small></span>}
         </div>
-        <div><h4>Bayar dengan QRIS</h4><ol><li>Buka aplikasi pembayaran yang mendukung QRIS.</li><li>Scan QRIS toko di samping.</li><li>Bayar sesuai total pembayaran yang tertera di checkout.</li><li>Simpan bukti pembayaran.</li></ol><label className="confirm-check"><input type="checkbox" checked={confirmed} onChange={e=>setConfirmed(e.target.checked)}/> Saya sudah membayar dan siap mengirim bukti jika diminta.</label></div>
+        <div className="qris-instructions"><h4>Bayar dengan QRIS</h4><ol><li>Buka aplikasi pembayaran yang mendukung QRIS.</li><li>Scan QRIS toko di samping.</li><li>Bayar sesuai total pembayaran yang tertera di checkout.</li><li>Simpan bukti pembayaran.</li></ol><label className="confirm-check"><input type="checkbox" checked={confirmed} onChange={e=>setConfirmed(e.target.checked)}/> <span>Saya sudah membayar dan siap mengirim bukti jika diminta.</span></label></div>
       </div>
       <button className="manual-submit" disabled={busy} onClick={submit}>{busy?"MEMPROSES...":"SAYA SUDAH BAYAR QRIS"}</button>
       <p className="manual-note">QRIS manual tidak dapat diverifikasi otomatis oleh website ini. Order dibuat sebagai <b>MENUNGGU VERIFIKASI</b>. Ganti <code>public/qris.png</code> dengan QRIS merchant kamu sendiri.</p>
